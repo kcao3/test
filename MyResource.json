@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "My sample API",
+        "version": "1.0.0",
+        "title": "My sample API",
+        "termsOfService": "http://helloreverb.com/terms/",
+        "contact": {
+            "email": "kcao3@mycompany.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "10.73.29.11:9890",
+    "basePath": "/my-services-1.0/rest/",
+    "tags": [        
+        {
+            "name": "Topology service",
+            "description": "Everything about Topology service",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://mycompany.com"
+            }
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {            
+        "/topology-service/metrics": {
+            "get": {
+                "tags": [
+                    "Topology Service"
+                ],
+                "summary": "Retrieve metrics of a link",
+                "description": "",
+                "operationId": "getMetrics",
+                "parameters": [                    
+                    {
+                        "name": "sourceNodeId",
+                        "in": "query",
+                        "description": "The unique identifier of the source node",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "destinationNodeId",
+                        "in": "query",
+                        "description": "The unique identifier of the destination node",
+                        "required": false,
+                        "type": "string"
+                    }                                    
+                ],                                
+                "responses": {
+                    "200": {
+                        "description": "Successful operation.",
+                        "schema": {                            
+                            "$ref": "#/definitions/GetMetricsResponse"                           
+                        } 
+                    },                     
+                    "404": {
+                        "description": "Metrics not found."
+                    },
+                    "500": {
+                        "description" : "Server encountered some unexpected error occurred while retrieving link metrics."
+                    },                    
+                    "503": {
+                        "description": "Server is not currently available to execute this operation."
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:Topology service",
+                            "read:Topology service"
+                        ]
+                    }
+                ]
+            }            
+        } 
+    },
+    
+    "definitions": { 
+       "GetMetricsResponse": { 
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }            
+        }
+    }
+}
