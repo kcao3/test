@@ -13,7 +13,7 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "10.73.29.11:9890",
+    "host": "mycompany.com",
     "basePath": "/my-services-1.0/rest/",
     "tags": [        
         {
