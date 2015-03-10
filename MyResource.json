@@ -37,7 +37,18 @@
                 "summary": "Retrieve metrics of a link",
                 "description": "",
                 "operationId": "getMetrics",
-                "parameters": [                    
+                "parameters": [  
+                    {
+                        "name": "callerIds",
+                        "in": "query",
+                        "description": "A list contains the unique IDs the caller could pass in.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
                     {
                         "name": "sourceNodeId",
                         "in": "query",
